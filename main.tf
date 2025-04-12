@@ -20,6 +20,7 @@ resource "libvirt_volume" "ubuntu_disk" {
   pool   = "default"
   source = var.os_image
   format = "qcow2"
+  size   = 21474836480
 }
 
 resource "libvirt_cloudinit_disk" "cloudinit" {
@@ -30,11 +31,11 @@ resource "libvirt_cloudinit_disk" "cloudinit" {
 }
 
 data "template_file" "user_data" {
-  template = file("${path.module}/cloud-init/user-data.yaml")
+  template = file("${path.module}/cloud_init/user-data.yaml")
 }
 
 data "template_file" "network_config" {
-  template = file("${path.module}/cloud-init/network-config.yaml")
+  template = file("${path.module}/cloud_init/network-config.yaml")
 }
 
 resource "libvirt_domain" "docker_vm" {

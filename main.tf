@@ -11,7 +11,6 @@ provider "libvirt" {
   uri = "qemu:///system"
 }
 
-# Укажи путь к ISO или QCOW2 образу Ubuntu
 variable "os_image" {
   default = "/var/lib/libvirt/images/ubuntu-22.04-server-cloudimg-amd64.img"
 }

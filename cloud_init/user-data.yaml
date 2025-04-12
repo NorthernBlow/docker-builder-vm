@@ -1,0 +1,10 @@
+#cloud-config
+hostname: docker-vm
+ssh_authorized_keys:
+  - # ensure that your pubkey going there
+packages:
+  - docker.io
+runcmd:
+  - systemctl enable docker
+  - systemctl start docker
+

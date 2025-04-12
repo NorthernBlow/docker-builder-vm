@@ -4,7 +4,11 @@ ssh_authorized_keys:
   - # ensure that your pubkey going there
 packages:
   - docker.io
+  - qemu-user-static
 runcmd:
+  - docker run --privileged --rm tonistiigi/binfmt --install all
+  - docker buildx create --use --name multiarch-builder
+  - docker buildx inspect --bootstrap
   - systemctl enable docker
   - systemctl start docker
 
